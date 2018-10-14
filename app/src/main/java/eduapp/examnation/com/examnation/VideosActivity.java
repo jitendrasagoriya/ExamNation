@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import java.util.List;
 
 import eduapp.examnation.com.examnation.adapter.ChapterAdapter;
 import eduapp.examnation.com.examnation.adapter.VideoAdapter;
+import eduapp.examnation.com.examnation.helper.Utility;
 import eduapp.examnation.com.examnation.http.HttpManager;
 import eduapp.examnation.com.examnation.listener.AppBarStateChangeListener;
 import eduapp.examnation.com.examnation.model.Chapter;
@@ -41,6 +43,7 @@ public class VideosActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
     private TextView chapterNameTextView;
+    private long subjectId;
 
 
     @Override
@@ -50,6 +53,7 @@ public class VideosActivity extends AppCompatActivity {
         id = extras.getLong("ID");
         chapterName = extras.getString("CHAPTERNAME");
         subjectName = extras.getString("SUBJECTNAME");
+        subjectId =  extras.getLong("SUBJECTID");
 
 
 
@@ -85,6 +89,10 @@ public class VideosActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //SET CHAPTER IMAGE
+        ImageView imageView = collapsingToolbar.findViewById(R.id.activity_video_header_image);
+        imageView.setImageResource(Utility.getIconBySubjectId(Integer.parseInt(subjectId+"")));
 
         //Get instance on progress bar
         progress = PrograssBarBuilder.getInstance(this);

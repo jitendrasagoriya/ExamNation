@@ -51,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Capter Name"
+                    android:gravity="center_vertical"
                     android:id="@+id/activity_video_header_name"
                     android:padding="10dp"/>
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,12 +41,14 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterH
         public TextView title;
         public TextView chapterName;
         public ProgressBar progressBar;
+        public CardView cardView;
 
         public ChapterHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.sNo);
             chapterName = (TextView) itemView.findViewById(R.id.chapterName);
             progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar);
+            cardView = (CardView) itemView.findViewById(R.id.chapterCardView);
 
         }
 
@@ -70,7 +73,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterH
                 chapterList.get(position).getName()
         ));
 
-        holder.chapterName.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on: " + chapterList.get(position));
@@ -79,8 +82,9 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterH
                 Intent intent = new Intent(context,ChapterDetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putLong("ID", chapterList.get(position).getId());
-                bundle.putString("NAME", chapterList.get(position).getName());
-                bundle.putString("CHAPTERNAME", Utility.getSucjectNameById(chapterList.get(position).getSubjectId()) );
+                bundle.putString("CHAPTERNAME", chapterList.get(position).getName());
+                bundle.putString("SUBJECTNAME", Utility.getSucjectNameById(chapterList.get(position).getSubjectId()) );
+                bundle.putLong("SUBJECTID", chapterList.get(position).getSubjectId());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

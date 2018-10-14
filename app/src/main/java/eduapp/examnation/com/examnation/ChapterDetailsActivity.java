@@ -11,9 +11,11 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import eduapp.examnation.com.examnation.helper.Utility;
 import eduapp.examnation.com.examnation.listener.AppBarStateChangeListener;
 
 public class ChapterDetailsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -22,6 +24,7 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
     private long id;
     private String chapterName;
     private String subjectName;
+    private long subjectId;
 
     private TextView chapterNameTextView;
     private TextView subjectNameTextView;
@@ -29,6 +32,8 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
     private CardView videoCardView;
     private CardView questionCardView;
     private CardView conceptCardView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +43,17 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
         //Get parameter values from previous activity
         Bundle extras = getIntent().getExtras();
         id = extras.getLong("ID");
-        chapterName = extras.getString("NAME");
-        subjectName = extras.getString("CHAPTERNAME");
+        chapterName = extras.getString("CHAPTERNAME");
+        subjectName = extras.getString("SUBJECTNAME");
+        subjectId =  extras.getLong("SUBJECTID");
 
         chapterNameTextView = findViewById(R.id.chapter_detail_chapter_name);
         chapterNameTextView.setText(chapterName);
 
         subjectNameTextView = findViewById(R.id.chapter_detail_subject_name);
         subjectNameTextView.setText(subjectName);
+
+
 
 
         //Add click listner
@@ -58,6 +66,8 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
         conceptCardView = findViewById(R.id.cardViewConcept);
         conceptCardView.setOnClickListener(this);
 
+
+
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_chapter_datails);
         setSupportActionBar(toolbar);
         toolbar.setTitle("  ");
@@ -65,6 +75,8 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
         final CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_chapter_datails);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         collapsingToolbar.setTitle("  ");
 
         appBarLayout = findViewById(R.id.app_bar_chapter_datails);
@@ -80,6 +92,11 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
                 }
             }
         });
+
+        //SET CHAPTER IMAGE
+        ImageView imageView = collapsingToolbar.findViewById(R.id.chapter_details_subject_image);
+        imageView.setImageResource(Utility.getIconBySubjectId(Integer.parseInt(subjectId+"")));
+
     }
 
     @Override
@@ -98,6 +115,7 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
         bundle.putLong("ID",this.id);
         bundle.putString("CHAPTERNAME",this.chapterName);
         bundle.putString("SUBJECTNAME",this.subjectName);
+        bundle.putLong("SUBJECTID",this.subjectId);
         intent.putExtras(bundle);
         startActivity(intent);
     }

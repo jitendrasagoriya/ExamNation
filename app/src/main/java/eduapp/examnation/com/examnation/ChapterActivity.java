@@ -29,6 +29,7 @@ import java.util.PriorityQueue;
 import eduapp.examnation.com.examnation.adapter.ChapterAdapter;
 import eduapp.examnation.com.examnation.adapter.RecyclerAdapter;
 import eduapp.examnation.com.examnation.database.DatabaseHelper;
+import eduapp.examnation.com.examnation.helper.Utility;
 import eduapp.examnation.com.examnation.http.HttpManager;
 import eduapp.examnation.com.examnation.model.Chapter;
 
@@ -76,7 +77,7 @@ public class ChapterActivity extends AppCompatActivity {
 
         ImageView imageView = collapsingToolbar.findViewById(R.id.imageChemistry);
 
-        imageView.setImageResource(getBackGroungImageName(Integer.parseInt(id+"")));
+        imageView.setImageResource(Utility.getBackGroungImageName(Integer.parseInt(id+"")));
 
         //Get instance on progress bar
         progress = PrograssBarBuilder.getInstance(this);
@@ -98,18 +99,7 @@ public class ChapterActivity extends AppCompatActivity {
         }
     }
 
-    private int getBackGroungImageName(int id){
-        if(id ==1){
-            return R.drawable.biology_bg;
-        }else if(id == 2){
-            return R.drawable.chemistry_bg;
-        }else if(id == 3){
-            return R.drawable.physics_bg_new;
-        }else if(id == 4){
-            return R.drawable.math_bg;
-        }
-        return 0;
-    }
+
 
 
    /* private void setupRecycler(List<Chapter> chapters) {
