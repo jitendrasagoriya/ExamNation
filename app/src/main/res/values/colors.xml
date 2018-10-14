@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6dcaff</color>
+    <color name="colorPrimaryDark">#2799df</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="primaryColor">#424242</color>
+    <color name="primaryLightColor">#6d6d6d</color>
+    <color name="primaryDarkColor">#1b1b1b</color>
+    <color name="secondaryColor">#2799df</color>
+    <color name="secondaryLightColor">#6dcaff</color>
+    <color name="secondaryDarkColor">#006bad</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+
+
+    <color name="primaryColorBlue">#1b0e51</color>
+    <color name="primaryLightColorBlue">#4a357e</color>
+    <color name="primaryDarkColorBlue">#000029</color>
+
+    <color name="chapterDetailsVideo">#ff7043</color>
+    <color name="chapterDetailsQuestion">#00c853</color>
+    <color name="chapterDetailsConcept"> #ff4081</color>
+
+    <color name="videoListPage">#FFF79070</color>
+</resources>
