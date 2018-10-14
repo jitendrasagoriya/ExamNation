@@ -78,6 +78,13 @@ public class VideosActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         appBarLayout = findViewById(R.id.app_bar_video);
         appBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override

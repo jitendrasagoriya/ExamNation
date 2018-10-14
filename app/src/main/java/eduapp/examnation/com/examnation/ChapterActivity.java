@@ -69,6 +69,15 @@ public class ChapterActivity extends AppCompatActivity {
         toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+
+        //ADD LISTNER ON BACK BUTTON
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_chapter);
         collapsingToolbar.setTitle(name);

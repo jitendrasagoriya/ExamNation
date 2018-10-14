@@ -72,6 +72,14 @@ public class ChapterDetailsActivity extends AppCompatActivity implements View.On
         setSupportActionBar(toolbar);
         toolbar.setTitle("  ");
 
+        //ADD LISTENER ON BACK BUTTON
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         final CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_chapter_datails);
 

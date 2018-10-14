@@ -24,8 +24,9 @@
             android:gravity="center_vertical"
             android:text="01"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/videoListPage"
             android:textSize="20sp"
+
             />
 
         <LinearLayout
